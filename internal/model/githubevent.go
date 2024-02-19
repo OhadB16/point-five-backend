@@ -7,25 +7,24 @@ type GitHubEvent struct {
 	Type      string        `json:"type"`
 	Actor     GitHubActor   `json:"actor"`
 	Repo      GitHubRepo    `json:"repo"`
-	Payload   GitHubPayload `json:"payload"` // New field
-	Public    bool          `json:"public"`  // New field
+	Payload   GitHubPayload `json:"payload"` 
+	Public    bool          `json:"public"`  
 	CreatedAt time.Time     `json:"created_at"`
 }
 
 type GitHubActor struct {
 	ID        int    `json:"id"`
 	Login     string `json:"login"`
-	AvatarURL string `json:"avatar_url"` // New field
+	AvatarURL string `json:"avatar_url"` 
 }
 
 type GitHubRepo struct {
 	ID   int    `json:"id"`
 	Name string `json:"name"`
-	URL  string `json:"url"` // New field
-	StarCount int    `json:"stargazers_count,omitempty"` // Add this line to include star count
+	URL  string `json:"url"` 
+	StarCount int    `json:"stargazers_count,omitempty"` 
 }
 
-// Define a new struct for the payload, adjust according to the actual structure
 type GitHubPayload struct {
-	Action string `json:"action"` // Example field, adjust based on actual payload data
+	Action string `json:"action"` 
 }

@@ -32,7 +32,7 @@ func StoreEvents(db *sql.DB, events []model.GitHubEvent) error {
     for _, event := range events {
         _, err := db.Exec(`INSERT OR IGNORE INTO events 
             (id, type, actor_id, actor_login, actor_avatar_url, repo_id, repo_name, repo_url, repo_star_count, payload_action, public, created_at) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, // Ensure there are 12 placeholders
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, // 12 placeholders
             event.ID, event.Type, event.Actor.ID, event.Actor.Login, event.Actor.AvatarURL,
             event.Repo.ID, event.Repo.Name, event.Repo.URL, event.Repo.StarCount, 
             event.Payload.Action, event.Public, event.CreatedAt)
