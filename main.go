@@ -19,12 +19,6 @@ func main() {
 	}
     defer db.Close()
 
-    // Fetch and store GitHub events once at startup and handle any returned error.
-	if err := controller.FetchAndStoreEvents(db); err != nil {
-		util.LogError(err) 
-		return             
-	}
-
     // Set up the HTTP server routing with CORS
     mux := http.NewServeMux()
     mux.HandleFunc(config.EventsPath, controller.EventsHandler(db))
